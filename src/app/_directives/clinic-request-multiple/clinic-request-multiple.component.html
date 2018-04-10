@@ -1,0 +1,78 @@
+<form id="ccForm" name="form" (ngSubmit)="submit();" #f="ngForm" novalidate>
+    <div class="form-container">
+        <div class="title">
+            Multiple Clinic Requests
+        </div>
+        <div class="content">
+            <div class="row form-row">
+                <label>Step 1: Download the template below for multiple clinic requests and complete all required fields</label>
+                <br>
+                <br>
+                <a  href="./assets/data/Client Clinic Request Template.xlsx" download="Client Clinic Request Template.xlsx">
+                    <span><div align="center">Click here to download template</div>
+                 
+                        <br>
+                        <div align="center">
+
+                            <img src="./assets/images/file download.png" alt="Download Image">
+                            <br>
+                            <br>
+                        </div>
+                    </span>
+                </a>
+
+            </div>
+
+            <div class="row form-row">
+                <label> Step 2: Verify that all required fields are populated and meet format requirements.
+                    <b>Note: </b>
+                    Only one file can be uploaded at a time</label>
+                <br>
+                <br>
+            </div>
+
+            <div draggable="true" ngClass="{{dragAreaClass}}">
+                <div align="center"> Drag & Drop Excel File Here 
+
+                        <img src="./assets/images/file upload.png" alt="Download Image">
+                       
+                    
+                    <br>
+                    <br> or
+                    <br>
+                    <br>
+                    <input type="file" #file (change)="onFileChange($event)" style="display:none" />
+                    <button (click)="file.click()">
+                        Browse Excel File</button>
+
+                </div>
+            </div>
+            <div class="row error" *ngIf="errors.length > 0">
+                <ul>
+                    <li *ngFor="let err of errors">{{err}}</li>
+                </ul>
+            </div>
+
+           <div style="color: blue">{{msg}}</div> 
+
+            
+        </div>
+
+    </div>
+
+    <div class="bottom-buttons pull-right">
+        <button type="reset" class="cancel" (click)="f.form.reset(); cancel()">Cancel</button>
+        <button type="submit" [disabled]="!enableButton" class="cvs-main cvs-blue">Submit</button>
+        <div class="clearfix"></div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+</form>

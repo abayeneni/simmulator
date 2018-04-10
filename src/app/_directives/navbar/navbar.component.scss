@@ -1,0 +1,71 @@
+@import '../../common';
+
+#navbar {
+  padding-left: 0px !important;
+}
+
+.navigation {
+  background: $color-bg-white;
+  border-bottom: 1px solid $color-bg-lightgray !important;
+  .row {
+    margin: 0px !important;
+  }
+  div {
+    padding-left: 10px;
+  }
+  .badge-header {
+    padding: 10px 35px 10px 15px;
+    font-size: 14px;
+    text-align: right;
+    .badge-text {
+      font-size: 15px;
+      background: $color-bg-midgray;
+      border-radius: 50%;
+      color: $color-menu-badge-blue;
+      font-weight: bold;
+      padding: 6px;
+      text-align: center;
+      margin-right: 20px;
+    }
+    .store-number {
+      font-weight: bold;
+      color: $color-menu-badge-blue;
+    }
+  }
+  .glyphicon {
+    color: $color-bg-midgray;
+    font-size: 16px;
+  }
+
+  .accountSettings{
+    cursor: pointer;
+    height: 1.6em;
+    border: 0em;
+    background-color: white;
+  }
+ 
+  .navbar {
+    background: none;
+    margin: 0;
+    border: 0;
+    font-size: 14px;
+    .navbar-collapse {
+      border-top: none;
+    }
+    .navbar-nav>li.active>a {
+      background-color: transparent;
+      color: $color-menu-text-red;
+    }
+    .navbar-nav>li>a {
+      color: $color-menu-text-gray;
+    }
+    .navbar-nav>li>a:hover,
+    .navbar-nav>li>a.active {
+      color: $color-menu-text-red;
+    }
+
+    .navbar-nav>li>ul>li>a.active {
+      color: $color-menu-text-red;
+    }
+  }
+}

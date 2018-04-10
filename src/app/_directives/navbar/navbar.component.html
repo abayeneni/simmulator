@@ -1,0 +1,51 @@
+<div class="navigation">
+    <div class="row">
+      <div class="col-md-9 col-sm-9 col-xs-6">
+        <nav class="navbar navbar-default">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed pull-left" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+              aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+          </div>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li *ngFor="let menu of menuList" [class]="[menu.type]">
+                <a *ngIf="menu.type=='dropdown'" href="#" class="dropdown-toggle" (click)="showDropdown($event)" data-toggle="dropdown" role="button" aria-haspopup="true"
+                  aria-expanded="false">
+                  {{menu.label}}
+                  <span class="caret"></span>
+                </a>
+                <ul *ngIf="menu.type=='dropdown'" class="dropdown-menu">
+                  <li *ngFor="let submenu of menu.subMenus">
+                    <a [routerLink]="[submenu.routerLink]" routerLinkActive="active" (click)="subMenuClicked($event)" >{{submenu.label}}</a>
+                  </li>
+                </ul>
+                <a *ngIf="menu.type!='dropdown'" [routerLink]="[menu.routerLink]" (click)="menuClicked($event)" routerLinkActive="active">{{menu.label}}</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+      <div class="col-md-3 col-sm-3 col-xs-6 pull-right badge-header" *ngIf=showUserBadge>
+        <span class="badge-text">{{shortName}}</span>{{userId}}
+       <button   title="Account Settings" *ngIf=showUserSettings class="accountSettings glyphicon glyphicon-cog " (click)="accountSettings()"></button>
+      </div>
+      <div class="col-md-3 col-sm-3 col-xs-6 pull-right badge-header" *ngIf=showStoreNumber>
+        Store#&nbsp;
+        <span class="store-number">{{storeNumber}}</span>
+      </div>
+       <div class="col-md-3 col-sm-3 col-xs-6 pull-right badge-header" *ngIf=showCorpUserBadge>
+        <span class="badge-text">{{shortCorpName}}</span>{{corpUserId}}
+        <span *ngIf=showUserSettings class="glyphicon glyphicon-cog"></span>
+      </div>
+      <div class="col-md-3 col-sm-3 col-xs-6 pull-right badge-header" *ngIf=showDlNumber>
+        <span class="badge-text">{{shortCorpName}}</span>{{dlUserId}}
+        <span *ngIf=showUserSettings class="glyphicon glyphicon-cog"></span>
+      </div>
+    </div>
+</div>

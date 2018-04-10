@@ -1,0 +1,109 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 50px;
+  background: #FFF;
+ 
+}
+
+.page-header {
+  background-color: #B8E3EB;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.page-header h1 {
+  color: #cc0000;
+}
+
+.page-navbar {
+  background-color: #FFFFFF;
+  height: 50px;
+  border-bottom: solid #a0a4a9 1px;
+}
+
+.container {
+  width: auto;
+  padding: 10px 40px 10px 40px;
+}
+
+.page-heading {
+  padding: 10px 0px;
+}
+
+.group-box {
+  background: #FFFFFF;
+  margin-bottom: 20px;
+  padding-bottom: 5px;
+}
+
+.group-box h5 {
+  border-bottom: solid #a0a4a9 2px;
+  margin: 15px 0px;
+  padding: 5px 0px;
+  font-size: 20px;
+}
+
+.btn {
+  padding: .275rem 1rem;
+}
+
+.logo {
+  height: 25px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.headerTitle {
+  font-weight: bold;
+  font-size: 25px;
+}
+
+.pageFooter {
+  background: #dae0e5;
+  padding: 10px 0px;
+}
+
+.pageFooter strong {
+  color: rgb(38, 72, 100)
+}
+
+section {
+  padding: 0 20px;
+}
+
+.tooltip-inner {
+  min-width: 500px;
+  max-width: 100%; 
+  height: auto;
+  background-color: #ffffb2;
+  color:#003348;
+  -webkit-box-shadow: 2px 1px 5px 0px #d1cccc;
+  -moz-box-shadow: 2px 1px 5px 0px #d1cccc;
+  box-shadow: 2px 1px 5px 0px #d1cccc;
+}
+
+
+
+.text-on-pannel {
+  background: #fff none repeat scroll 0 0;
+  height: auto;
+  margin-left: 20px;
+  padding: 3px 5px;
+  position: absolute;
+  margin-top: -47px;
+  border: 1px solid #337ab7;
+  border-radius: 8px;
+}
+
+.panel {
+  /* for text on pannel */
+  margin-top: 27px !important;
+}
+
+.panel-body {
+  padding-top: 30px !important;
+}

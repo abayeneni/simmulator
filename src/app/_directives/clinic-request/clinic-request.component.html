@@ -1,0 +1,449 @@
+<form id="ccForm" name="form" (ngSubmit)="submit();" #f="ngForm" novalidate>
+  <div class="form-container">
+    <div class="title">
+      Clinic Contact Information
+    </div>
+    <div class="content">
+      <div class="row form-row">
+        <div class="form-group col-md-4 col-sm-6 col-xs-12" [ngClass]="{ 'has-error': (f.submitted || contactFullName.touched) && !contactFullName.valid }">
+          <label for="contactFullName">Contact Full Name
+            <span class="error">*</span>
+          </label>
+          <input [disabled]="isConfirmed||isCancelledStore" type="text" class="form-control" name="contactFullName" id="contactFullName" [(ngModel)]="data.contactFullName"
+            #contactFullName="ngModel" required maxlength="60" pattern="^([A-Za-z']+[,.]?[ ]?|[A-Za-z']+['-]?)+$" />
+          <show-errors [f]="f" [control]="contactFullName"></show-errors>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4 col-sm-6 col-xs-12">
+          <label for="phoneNum">Phone Number
+            <span class="error">*</span>
+          </label>
+
+          <div class="row form-row no-padding" id="phoneNum">
+            <div class="form-group col-md-4 col-sm-4 col-xs-12" [ngClass]="{ 'has-error': (f.submitted || phoneNum1.touched) && !phoneNum1.valid }">
+              <input [disabled]="isConfirmed||isCancelledStore" type="text" class="form-control" name="phoneNum1" id="phoneNum1" [(ngModel)]="data.phoneNum1"
+                #phoneNum1="ngModel" required maxlength="3" pattern="[1-9][0-9]{2,2}$" (keydown)="onlyNumber($event)" (keyup)="goNext($event, 'phoneNum2')"
+              />
+              <show-errors [f]="f" [control]="phoneNum1"></show-errors>
+            </div>
+            <div class="form-group col-md-4 col-sm-4 col-xs-12" [ngClass]="{ 'has-error': (f.submitted || phoneNum2.touched) && !phoneNum2.valid }">
+              <input [disabled]="isConfirmed||isCancelledStore" type="text" class="form-control" name="phoneNum2" id="phoneNum2" [(ngModel)]="data.phoneNum2"
+                #phoneNum2="ngModel" required maxlength="3" pattern="[0-9]{3,3}$" (keydown)="onlyNumber($event)" (keyup)="goNext($event, 'phoneNum3')"
+              />
+              <show-errors [f]="f" [control]="phoneNum2"></show-errors>
+            </div>
+            <div class="form-group col-md-4 col-sm-4 col-xs-12" [ngClass]="{ 'has-error': (f.submitted || phoneNum3.touched) && !phoneNum3.valid }">
+              <input [disabled]="isConfirmed||isCancelledStore" type="text" class="form-control" name="phoneNum3" id="phoneNum3" [(ngModel)]="data.phoneNum3"
+                #phoneNum3="ngModel" required maxlength="4" pattern="[0-9]{4,4}$" (keydown)="onlyNumber($event)" (keyup)="goNext($event, 'email')"
+              />
+              <show-errors [f]="f" [control]="phoneNum3"></show-errors>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row form-row">
+        <div class="form-group col-md-4 col-sm-6 col-xs-12" [ngClass]="{ 'has-error': (f.submitted || email.touched) && !email.valid }">
+          <label for="email">Email
+            <span class="error">*</span>
+          </label>
+          <input [disabled]="isConfirmed||isCancelledStore" type="text" class="form-control" name="email" id="email" [(ngModel)]="data.email" #email="ngModel"
+            required maxlength="100" pattern="^[\w-]+(?:\.[\w-]+)*@(?:[\w-]+\.)+[a-zA-Z]{2,7}$" (keydown)="validateEmail($event)"
+          />
+          <show-errors [f]="f" [control]="email"></show-errors>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-container">
+    <div class="title">
+      Clinic Location Information
+    </div>
+    <div class="content">
+      <div class="row form-row">
+        <div class="form-group col-md-4 col-sm-6 col-xs-12" [ngClass]="{ 'has-error': (f.submitted || clinicName.touched) && !clinicName.valid }">
+          <label for="clinicName">Clinic Name
+            <span class="error">*</span>
+          </label>
+          <input [disabled]="isConfirmed||isCancelledStore" type="text" class="form-control" name="clinicName" id="clinicName" [(ngModel)]="data.clinicName"
+            #clinicName="ngModel" required maxlength="60" (keydown)="clinicNameKeydown($event)" />
+          <show-errors [f]="f" [control]="clinicName"></show-errors>
+        </div>
+      </div>
+
+      <div class="row form-row">
+        <div class="form-group col-md-4 col-sm-6 col-xs-12" [ngClass]="{ 'has-error': (f.submitted || addressLine1.touched) && !addressLine1.valid }">
+          <label for="addressLine1">Address Line 1
+            <span class="error">*</span>
+          </label>
+          <input [disabled]="isConfirmed||isCancelledStore" type="text" class="form-control" name="addressLine1" id="addressLine1" [(ngModel)]="data.addressLine1"
+            #addressLine1="ngModel" required maxlength="100" />
+          <show-errors [f]="f" [control]="addressLine1"></show-errors>
+        </div>
+        <div class="form-group col-md-4 col-sm-6 col-xs-12" [ngClass]="{ 'has-error': (f.submitted || addressLine2.touched) && !addressLine2.valid }">
+          <label for="addressLine2">Address Line 2</label>
+          <input [disabled]="isConfirmed||isCancelledStore" type="text" class="form-control" name="addressLine2" id="addressLine2" [(ngModel)]="data.addressLine2"
+            #addressLine2="ngModel" maxlength="100" />
+          <show-errors [f]="f" [control]="addressLine2"></show-errors>
+        </div>
+      </div>
+
+      <div class="row form-row">
+        <div class="form-group col-md-4 col-sm-6 col-xs-12" [ngClass]="{ 'has-error': (f.submitted || city.touched) && !city.valid }">
+          <label for="city">City
+            <span class="error">*</span>
+          </label>
+          <input [disabled]="isConfirmed||isCancelledStore" type="text" class="form-control" name="city" id="city" [(ngModel)]="data.city" #city="ngModel"
+            required maxlength="60" pattern="[a-zA-Z\s]{1,}$" />
+          <show-errors [f]="f" [control]="city"></show-errors>
+        </div>
+        <div class="form-group col-md-2 col-sm-3 col-xs-12" [ngClass]="{ 'has-error': (f.submitted || zipCode.touched) && (!zipCode.valid || zipCode.value == 00000) }">
+          <label for="zipCode">ZipCode
+            <span class="error">*</span>
+          </label>
+          <input [disabled]="isConfirmed||isCancelledStore" type="text" class="form-control" name="zipCode" id="zipCode" [(ngModel)]="data.zipCode" #zipCode="ngModel"
+            required maxlength="5" minlength="5" pattern="[0-9]{5,5}$" />
+          <show-errors [f]="f" [control]="zipCode" invalidVal="00000"></show-errors>
+        </div>
+        <div class="form-group col-md-2 col-sm-3 col-xs-12" [ngClass]="{ 'has-error': (f.submitted || state.touched) && !state.valid }">
+          <label for="state">State
+            <span class="error">*</span>
+          </label>
+          <select [disabled]="isConfirmed||isCancelledStore" id="state" class="form-control" [(ngModel)]="data.state" name="state" #state="ngModel" required>
+            <option selected>Select</option>
+            <option *ngFor="let state of states" [ngValue]="state.stateName">{{state.stateName}}
+            </option>
+          </select>
+          <show-errors [f]="f" [control]="state"></show-errors>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-container">
+    <div class="title">
+      Additional Clinic Details
+    </div>
+    <div class="content">
+      <div class="row form-row">
+        <div class="form-group col-md-4 col-sm-6 col-xs-12" [ngClass]="{ 'has-error': (f.submitted || clinicDate.touched) && !clinicDate.valid }">
+          <label for="clinicDate">Clinic Date
+            <span class="error">*</span>
+          </label>
+          <div class='input-group date' id='clinicDate1'>
+            <input [disabled]="isConfirmed||isCancelledStore" type="text" class="form-control" id="clinicDate" required name="clinicDate"
+              #clinicDate="ngModel" [(ngModel)]="data.clinicDate" (focusout)="clinicDateChanged($event)" (keyup)="dateKeyUp($event)" placeholder="MM/DD/YYYY">
+            <span class="input-group-addon">
+              <i class="glyphicon glyphicon-calendar"></i>
+            </span>
+          </div>
+          <show-errors [f]="f" [control]="clinicDate"></show-errors>
+        </div>
+      </div>
+
+      <div class="row form-row">
+        <div class="form-group col-md-4 col-sm-6 col-xs-12" [ngClass]="{ 'has-error': (f.submitted || clinicStartTime.touched) && !clinicStartTime.valid }">
+          <label for="clinicStartTime">Clinic Start Time
+            <span class="error">*</span>
+          </label>
+          <div class='input-group date' id='clinicStartTime1'>
+            <input [disabled]="isConfirmed||isCancelledStore" type="text" class="form-control" id="clinicStartTime" [(ngModel)]="data.clinicStartTime"
+              name="clinicStartTime" #clinicStartTime="ngModel" required pattern="^([0-1][0-9])[\.|\/|-|\:][0-5][0-9][\.|\/|-|\:|\s][Aa|Pp][mM]$"
+              (keyup)="timeKeyUp($event)" (focusout)="clinicStartTimeChanged($event)" placeholder="HH:MM">
+            <span class="input-group-addon">
+              <i class="glyphicon glyphicon-time"></i>
+            </span>
+          </div>
+          <show-errors [f]="f" [control]="clinicStartTime"></show-errors>
+        </div>
+        <div class="form-group col-md-4 col-sm-6 col-xs-12" [ngClass]="{ 'has-error': (f.submitted || clinicEndTime.touched) && !clinicEndTime.valid }">
+          <label for="clinicEndTime">Clinic End Time
+            <span class="error">*</span>
+          </label>
+          <div class='input-group date' id='clinicEndTime1'>
+            <input [disabled]="isConfirmed||isCancelledStore" type="text" class="form-control" id="clinicEndTime" [(ngModel)]="data.clinicEndTime" name="clinicEndTime"
+              #clinicEndTime="ngModel" required pattern="^([0-1][0-9])[\.|\/|-|\:][0-5][0-9][\.|\/|-|\:|\s][Aa|Pp][mM]$" (keyup)="timeKeyUp($event)"
+              (focusout)="clinicEndTimeChanged($event)" placeholder="HH:MM">
+            <span class="input-group-addon">
+              <i class="glyphicon glyphicon-time"></i>
+            </span>
+          </div>
+          <show-errors [f]="f" [control]="clinicEndTime"></show-errors>
+        </div>
+      </div>
+
+      <div class="row form-row">
+        <div class="form-group col-md-4 col-sm-6 col-xs-12" [ngClass]="{ 'has-error': (f.submitted || (participants_65_up.touched && participants_4_64.touched)) && !participants_65_up.valid && !participants_4_64.valid }">
+          <label for="participants_4_64">No. of participants between ages 4-64
+          </label>
+          <input [disabled]="isConfirmed||isCancelledStore" type="text" class="form-control" name="participants_4_64" id="participants_4_64" [(ngModel)]="data.participants_4_64"
+            #participants_4_64="ngModel" required (keydown)="onlyNumber($event)" maxlength="3" />
+          <show-errors [f]="f" [control]="participants_4_64" [other]="participants_65_up"></show-errors>
+        </div>
+      </div>
+
+      <div class="row form-row">
+        <div class="form-group col-md-4 col-sm-6 col-xs-12" [ngClass]="{ 'has-error': (f.submitted || (participants_65_up.touched && participants_4_64.touched)) && !participants_65_up.valid && !participants_4_64.valid }">
+          <label for="participants_65_up">No. of participants aged 65 and up
+          </label>
+          <input [disabled]="isConfirmed||isCancelledStore" type="text" class="form-control" name="participants_65_up" id="participants_65_up" [(ngModel)]="data.participants_65_up"
+            #participants_65_up="ngModel" required (keydown)="onlyNumber($event)" maxlength="3" />
+          <show-errors [f]="f" [control]="participants_65_up" [other]="participants_4_64"></show-errors>
+        </div>
+      </div>
+
+      <div *ngIf="isSL">
+        <!-- div class="row">
+            <div class="form-check col-md-4 col-sm-6 col-xs-12">
+              <input type="checkbox" class="form-check-input" id="extra1">
+              <label class="form-check-label" for="extra1">Pneumovax 23 (Pneumonia)</label>
+            </div>
+  
+            <div class="form-check col-md-4 col-sm-6 col-xs-12">
+              <input type="checkbox" class="form-check-input" id="extra2">
+              <label class="form-check-label" for="extra2">Prevnar 13 (Pneumonia)</label>
+            </div>
+          </div>
+  
+          <div class="row">
+            <div class="form-check col-md-4 col-sm-6 col-xs-12">
+              <input type="checkbox" class="form-check-input" id="extra3">
+              <label class="form-check-label" for="extra3">Boostrix (Tdap)</label>
+            </div>
+  
+            <div class="form-check col-md-4 col-sm-6 col-xs-12">
+              <input type="checkbox" class="form-check-input" id="extra4">
+              <label class="form-check-label" for="extra4">Zostavax (Shingles)</label>
+            </div>
+          </div>
+  
+          <div class="row">
+            <div class="form-check col-md-4 col-sm-6 col-xs-12">
+              <input type="checkbox" class="form-check-input" id="extra5">
+              <label class="form-check-label" for="extra5">Shingrix (Shingles)</label>
+            </div>
+          </div -->
+        <div class="row">
+          <div *ngFor="let vaccination of vaccinationList" class="form-check col-md-4 col-sm-6 col-xs-12">
+            <input [disabled]="isConfirmed||isCancelledStore" type="checkbox" id="vaccination" [checked]="updatedVaccinationList.indexOf(vaccination) >= 0" value="{{vaccination}}" (change)="onCheckboxChange(vaccination,$event)"
+            />
+
+            <label class="form-check-label" for="vaccination">{{vaccination}}</label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-container">
+    <div class="title">
+      Voucher Program
+    </div>
+    <div class="content">
+      <p>The flu voucher program allows clients to cover the cost of their employees’ flu shots and be invoiced monthly.</p>
+      <p>
+        <b>Note:</b> At this time the High Dose flu vaccine is not covered through the Retail voucher program.
+      </p>
+      Are you a client interested in learning more about our Retail Flu Voucher Program?
+      <span class="error">*</span>
+      <label class="radio-inline">
+        <input [disabled]="isConfirmed||isCancelledStore" type="radio" name="voucherInfoYes" [(ngModel)]="data.voucherInfo" value=yes #voucherInfo="ngModel"
+          required (click)="showPopup('voucherPopup')">Yes</label>
+      <label class="radio-inline">
+        <input [disabled]="isConfirmed||isCancelledStore" type="radio" name="voucherInfoNo" [(ngModel)]="data.voucherInfo" value=no #voucherInfo="ngModel"
+          required>No</label>
+      <show-errors [f]="f" [control]="voucherInfo"></show-errors>
+    </div>
+
+    <div id="voucherPopup" class="modal fade" role="dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title pull-left">Message</h4>
+          <button type="button" class="close pull-right" data-dismiss="modal">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <span class="glyphicon glyphicon-info-sign"></span>
+          If yes, a representative from Vaccine Contracting will reach out to you within 5-7 Business Days to discuss contracting,
+          pricing, voucher process, etc.
+          <br/>
+          <br/> If you do not receive a response within 5-7 business days, you may reach out to
+          <a href="mailto:VaccineContracting@cvscaremark.com">VaccineContracting@cvscaremark.com</a> directly.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-container" *ngIf="data.showNotes">
+    <div class="title">
+      Notes
+    </div>
+    <div class="content">
+      <div class="row form-row">
+        <div class="form-group col-md-6 col-sm-6 col-xs-12" [ngClass]="{ 'has-error': !notes.valid }">
+          <textarea rows="3"  class="form-control" name="notes" id="notes" [(ngModel)]="data.notes" #notes="ngModel"
+            maxlength="300" placeholder="Record any addtional infromation for the clinic here" [required]="notesMandatory" >
+          </textarea>
+          <show-errors [f]="f" [control]="notes"></show-errors>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="bottom-buttons pull-right" *ngIf="action == 'create'">
+    <button type="reset" class="cancel" (click)="f.form.reset(); cancel()">Cancel</button>
+    <button type="submit" name="createBtn" id="createBtn" class="cvs-main cvs-blue"  (click)="addDefaults($event)">Create Clinic</button>
+    <div class="clearfix"></div>
+  </div>
+
+  <div class="bottom-buttons pull-right" *ngIf="action == 'view' && status == 'Pending'">
+    <button type="button" class="cancel pull-left" (click)="addDefaults($event);cancelClinic()">Cancel Clinic</button>
+    <button type="button" class="cancel" (click)="reject()">Reject Clinic</button>
+    <button type="button" name="confBtn" id="confBtn" class="cvs-main cvs-blue" (click)="addDefaults($event)">Confirm Clinic</button>
+    <div class="clearfix"></div>
+  </div>
+
+  <div class="bottom-buttons pull-right" *ngIf="action == 'view' && status == 'Rejected'">
+      <button type="button" class="cancel pull-left" (click)="addDefaults($event);cancelClinic()">Cancel Clinic</button>
+      <button type="submit" name="reassignBtn" id="reassignBtn" class="cvs-main cvs-blue" (click)="addDefaults($event)">Re-Assign Clinic</button>
+      <div class="clearfix"></div>
+    </div>
+
+  <div class="bottom-buttons pull-right" *ngIf="action == 'view' && status == 'Confirmed'">
+    <button type="button" class="cancel pull-left" (click)="addDefaults($event);cancelClinic()">Cancel Clinic</button>
+    <button type="button" class="cancel" (click)="reject()" *ngIf="user == 'store' && type != 'past'">Reject Clinic</button>
+    <button type="button" class="cancel" (click)="reAssign()" *ngIf="user != 'store' && type != 'past'">Re-Assign Clinic</button>
+
+    <button type="submit" name="saveBtn" id="saveBtn" class="cvs-main cvs-blue" (click)="addDefaults($event)" *ngIf="type != 'past'">Save Clinic</button>
+    <div class="clearfix"></div>
+  </div>
+  <div class="bottom-buttons pull-right" *ngIf="action == 'view' && status == 'Cancelled'">
+    <button type="submit" name="saveBtn" id="saveBtn" class="cvs-main cvs-blue" (click)="addDefaults($event)" *ngIf="type != 'past'">Save Clinic</button>
+
+    <div class="clearfix"></div>
+  </div>
+
+  <div id="confirmPopup" class="modal fade" role="dialog">
+    <div class="modal-content" style="width: 400px;">
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">Pharmacist Information</h4>
+        <button type="button" class="close pull-right" data-dismiss="modal">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Please provide the following information to complete the confirmation process for this clinic
+
+        <div class="content" style="margin-top: 20px;">
+          <div class="row form-row">
+            <div class="form-group col-xs-12" [ngClass]="{ 'has-error': (pharmaName.touched) && !pharmaName.valid }">
+              <label for="pharmaName">Pharmacist Immunizer Name
+                <span class="error">*</span>
+              </label>
+              <input type="text" class="form-control" name="pharmaName" id="pharmaName" [(ngModel)]="data.pharmaName"
+                #pharmaName="ngModel" required maxlength="60" pattern="^([A-Za-z']+[,.]?[ ]?|[A-Za-z']+['-]?)+$" />
+              <show-errors [f]="f" [control]="pharmaName"></show-errors>
+            </div>
+          </div>
+
+          <div class="row form-row">
+            <div class="form-group col-xs-12" [ngClass]="{ 'has-error': (pharma_cnt.touched) && !pharma_cnt.valid }">
+              <label for="pharma_cnt">No. of Immunizers Required for Clinic
+                <span class="error">*</span>
+              </label>
+              <input type="text" class="form-control" name="pharma_cnt" id="pharma_cnt" [(ngModel)]="data.pharma_cnt" #pharma_cnt="ngModel"
+                required (keydown)="onlyNumber($event)" />
+              <show-errors [f]="f" [control]="pharma_cnt"></show-errors>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-12">
+              <label for="phPhoneNum">Pharmacist Phone Number
+                <span class="error">*</span>
+              </label>
+
+              <div class="row form-row no-padding" id="phPhoneNum">
+                <div class="form-group col-md-4 col-sm-4 col-xs-12"[ngClass]="{ 'has-error': (pharmaPhnNbr1.touched) && !pharmaPhnNbr1.valid }">
+                  <input type="text" class="form-control" name="pharmaPhnNbr1" id="pharmaPhnNbr1" [(ngModel)]="data.pharmaPhnNbr1" #pharmaPhnNbr1="ngModel"
+                    required maxlength="3" pattern="[1-9][0-9]{2,2}$" (keydown)="onlyNumber($event)" (keyup)="goNext($event, 'pharmaPhnNbr2')"
+                  />
+                  <show-errors [f]="f" [control]="pharmaPhnNbr1"></show-errors>
+                </div>
+                <div class="form-group col-md-4 col-sm-4 col-xs-12"[ngClass]="{ 'has-error': (pharmaPhnNbr2.touched) && !pharmaPhnNbr2.valid }">
+                  <input type="text" class="form-control" name="pharmaPhnNbr2" id="pharmaPhnNbr2" [(ngModel)]="data.pharmaPhnNbr2" #pharmaPhnNbr2="ngModel"
+                    required maxlength="3" pattern="[0-9]{3,3}$" (keydown)="onlyNumber($event)" (keyup)="goNext($event, 'pharmaPhnNbr3')"
+                  />
+                  <show-errors [f]="f" [control]="pharmaPhnNbr2"></show-errors>
+                </div>
+                <div class="form-group col-md-4 col-sm-4 col-xs-12"[ngClass]="{ 'has-error': (pharmaPhnNbr3.touched) && !pharmaPhnNbr3.valid }">
+                  <input type="text" class="form-control" name="pharmaPhnNbr3" id="pharmaPhnNbr3" [(ngModel)]="data.pharmaPhnNbr3" #pharmaPhnNbr3="ngModel"
+                    required maxlength="4" pattern="[0-9]{4,4}$" (keydown)="onlyNumber($event)" />
+                  <show-errors [f]="f" [control]="pharmaPhnNbr3"></show-errors>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="text-center">
+            <button type="button" (click)= "submitConfirm()" class="cvs-main cvs-blue">Confirm</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- <div id="cancelPopup" class="modal fade" role="dialog">
+    <div class="modal-content" style="width: 400px;">
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">Cancel Clinic</h4>
+        <button type="button" class="close pull-right" data-dismiss="modal">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Please provide reason for cancellation below
+        <span class="error">*</span>
+
+        <div class="content" style="margin-top: 20px;">
+          <div class="row form-row">
+            <div class="form-group col-md-6 col-sm-6 col-xs-12">
+   
+              <textarea class="form-control" name="cancellationReason" id="cancellationReason" [(ngModel)]="data.cancellationReason" #cancellationReason="ngModel" required
+              maxlength="300" > 
+            </textarea>
+            </div>
+          </div>
+
+        
+
+          <div class="text-center">
+            <button type="button" (click)="submitCancel()" class="cvs-main cvs-blue">Submit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+</form>
+
+<div id="confirmClinicPopup" data-backdrop="false" class="fade in" [style.display]="showModal ? 'block' : 'none'">
+
+  </div>
+  <div class="modal" tabindex="-1" role="dialog" style="display: block" [style.display]="showModal ? 'block' : 'none'">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <span>Message </span>
+          <a class="close icon-cancel fr" data-dismiss="modal" aria-label="Close" (click)="navigate()">&times;</a>
+        </div>
+        <div class="modal-body">
+          <span *ngIf="success" class="glyphicon glyphicon-ok-sign"></span>
+          <span *ngIf="!success" class="glyphicon glyphicon glyphicon-remove-sign"></span>
+          {{popupMsg}}
+
+        </div>
+      </div>
+    </div>
+  </div>

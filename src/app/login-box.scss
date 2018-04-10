@@ -1,0 +1,47 @@
+@import 'common';
+
+.content-wrapper {
+  margin-bottom: 30px !important;
+}
+.login-box {
+  width: 330px;
+  margin: 40px auto 0px auto;
+  .panel-heading {
+    color: $color-box-title-blue;
+    text-align: center;
+    margin-top: 0px;
+    background-color: $color-bg-lightgray;
+    border-bottom: 1px solid $color-bg-midgray;
+  }
+  .panel-body {
+    margin-top: 0px;
+    .note-text {
+      color: $color-box-text-gray;
+      margin-bottom: 40px;
+    }
+    label {
+      margin-top: 20px;
+      font-weight: normal;
+    }
+    a {
+      margin-top: 20px;
+      color: $color-box-title-blue;
+      text-decoration: underline;
+      font-weight: bold;
+    }
+    input.invalid {
+      background-color: $color-error-text-red;
+      border-color: $color-error-border-red;
+    }
+    .error {
+      color: $color-error-border-red;
+    }
+    .button-container {
+      margin: 50px auto 0px auto;
+      text-align: center;
+    }
+    .buttom-text {
+      margin-top: 60px;
+    }
+  }
+}
