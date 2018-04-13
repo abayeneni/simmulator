@@ -8,9 +8,16 @@ import {DOCUMENT} from '@angular/common';
   styleUrls: ['./work-request-feed.component.scss']
 })
 export class WorkRequestFeedComponent implements OnInit {
-  
-  constructor (@Inject(DOCUMENT) private document: any) {
-   
+ constructor () { }
+//  constructor (private popup:Popup) { }
+//
+//ClickButton () {
+//
+// this.popup.options= {color: "red" }
+//
+// this.popup.show();
+//}
+
   ngOnInit() {
   }
 

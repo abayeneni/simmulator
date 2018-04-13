@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Observer } from 'rxjs';
-import { ClinicService } from '../../_services/clinic.service';
+import { SimulatorService } from '../../_services/simulator.service';
 import { Router } from '@angular/router';
 
 @Component({

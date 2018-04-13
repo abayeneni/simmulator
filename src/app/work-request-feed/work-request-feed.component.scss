@@ -1,19 +1,31 @@
-.text-on-pannel {
-  background: #fff none repeat scroll 0 0;
-  height: auto;
-  margin-left: 20px;
-  padding: 3px 5px;
-  position: absolute;
-  margin-top: -47px;
-  border: 1px solid #337ab7;
-  border-radius: 8px;
+.admin > div {
+  display: inline-block;
+  vertical-align: top;
+  margin-right: 1em;
 }
 
-.panel {
-  /* for text on pannel */
-  margin-top: 27px !important;
+
+.table-summary {
+	table-layout:fixed;
 }
 
-.panel-body {
-  padding-top: 30px !important;
+.table-summary td {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+.table-borderless tbody > tr > td  {
+  border: 0;
+}
+  
+
+td.summary-heading {
+  font-weight: bold;
+  width:40%
+}
+
+td.summary-content {
+  width:60%
 }

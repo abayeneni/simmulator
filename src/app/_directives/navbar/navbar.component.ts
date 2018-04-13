@@ -1,7 +1,6 @@
 import { Component, OnInit, Input, ElementRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { AuthService } from '../../_services/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -26,11 +25,10 @@ export class NavbarComponent implements OnInit {
   storeNumber: string = "1201";
   dlUserId : string;
 
-  constructor(private route: ActivatedRoute, private router: Router, private elRef: ElementRef , private authservice : AuthService) {
+  constructor(private route: ActivatedRoute, private router: Router, private elRef: ElementRef ) {
     this.route.params.subscribe(params => {
       if (this.userId === undefined || this.userId == '') {
         this.userId = params['username'];
-        this.authservice.userId = this.userId;
       }
       console.log("nav bar");
       console.log(this.userId);
@@ -39,9 +37,6 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit() {
 
-    this.storeNumber = this.authservice.storeId;
-    this.corpUserId = this.authservice.corp_userId;
-    this.dlUserId = this.authservice.dl_userId;
 
   }
   accountSettings() {

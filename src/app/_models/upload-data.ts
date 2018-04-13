@@ -1,3 +1,3 @@
 export class UploadData {
-excelFile:File
+    excelFile:File
 }
