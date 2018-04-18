@@ -1,126 +1,167 @@
-<div class="panel panel-primary">
-	<div class="panel-body">
-		<h3 class="text-on-pannel text-primary">
-			<strong class="text-uppercase"> Choose File</strong>
-		</h3>
-
-		<form method="POST" action="#" enctype="multipart/form-data">
-			<!-- COMPONENT START -->
-			<div class="form-group">
-				<div class="file" name="Fichier1">
-					<input type="file" accept=".xls,.xlsx, .csv, .txt"
-						class="form-control" />
+ <div class="row">
+ 
+ 		<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+ 		<div class="panel panel-default" style="height: 20rem;">
+	    <div class="panel-heading">Choose Capacity Feed File</div>
+	      <div class="panel-body ">
+	      <form method="POST" action="#" enctype="multipart/form-data">
+				<div class="form-group">
+					<div class="file" name="Fichier1">
+						<input type="file" accept=".xls,.xlsx, .csv, .txt"
+							class="form-control" />
+					</div>
 				</div>
-			</div>
-			<!-- COMPONENT END -->
-			<div class="form-group">
-				<button type="submit" class="btn btn-primary pull-right">Submit</button>
-				<button type="reset" class="btn btn-danger">Reset</button>
+				<div class="form-group">
+					<button type="submit" class="btn btn-success pull-right">Submit</button>
+					<button type="reset" class="btn btn-danger">Reset</button>
+				</div>
+			</form>
+	        
+	        </div>
+	  </div>
+ 		</div>
+ 		
+ 		 		<!-- <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+ 		<div class="panel panel-default" style="height: 20rem;">
+	    <div class="panel-heading">Choose Capacity Feed File</div>
+	      <div class="panel-body ">
+	      <form #createTrayForm="ngForm"  method="POST" action="#" enctype="multipart/form-data">
+				<div class="form-group">
+					<div class="file" name="Fichier1">
+						<input type="file" accept=".csv" #fileupload [(ngModel)]="myFile" name="myFile" 
+							class="form-control" />
+					</div>
+				</div>
+				<div class="form-group">
+					<button type="submit" class="btn btn-success pull-right" (click)="changeListener(fileupload.files)">Submit</button>
+					<button type="reset" class="btn btn-danger">Reset</button>
+				</div>
+			</form>
+	        
+	        </div>
+	  </div>
+ 		</div> -->
+ 		<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+ 			<div class="panel panel-default" style="height: 20rem;">
+      <div class="panel-heading">Reset Data</div>
+      <div class="panel-body ">
+    <form method="POST" action="#" enctype="multipart/form-data">
+			
+			<div class="form-check form-check-inline">
+				<label class="form-check-label"> <input
+					class="form-check-input" type="radio" name="inlineRadioOptions"
+					id="inlineRadio1" value="option1"> SIM Capacity Feed Table
+				</label><br /> 
 			</div>
 		</form>
-	</div>
+        <a href="#" class="btn btn-danger">Clear Data</a>
+
+    </div>
+  </div>
+ 		</div>
+ 	
+ </div>
+ 
+ 
+ <div>
+                Select file:
+                <input type="file" (change)="changeListener($event)">
 </div>
-
-
-
-
-<div class="panel panel-primary">
-	<div class="panel-body">
-		<h3 class="text-on-pannel text-primary">
-			<strong class="text-uppercase"> Uploaded File Data</strong>
-		</h3>
-
-		<table id="example" class="table table-striped table-bordered"
-			style="width: 100%">
+ 
+ 
+<div class="row">
+	<div class="col-lg-12">
+		<div class="panel panel-default" style="display: table; margin: auto">
+		<div class="panel-heading"> Uploaded File Data</div>
+	<div class="panel-body" style="overflow-x: auto;">
+	
+	<table id="example" class="table table-striped table-bordered table-responsive"
+			style="width: Auto">
 			<thead>
 				<tr>
-					<th>Name</th>
-					<th>Position</th>
-					<th>Office</th>
-					<th>Age</th>
-					<th>Start date</th>
-					<th>Salary</th>
+					<th>Capacity Notification Id</th>
+					<th>Processing Pharmacy Id</th>
+					<th>lookAhead TimeBand</th>
+					<th>load Time</th>
+					<th>Time Band</th>
+					<th>Filler</th>
+					<th>Filler</th>
+					<th>Filler</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr>
-					<td>Tiger Nixon</td>
-					<td>System Architect</td>
-					<td>Edinburgh</td>
-					<td>61</td>
-					<td>2011/04/25</td>
-					<td>$320,800</td>
+					<td>473458</td>
+					<td>10001</td>
+					<td>2</td>
+					<td>04/06/2018 13:00:00</td>
+					<td>100, 101, 6, 90</td>
+					<td>Filler</td>
 				</tr>
 				<tr>
-					<td>Garrett Winters</td>
-					<td>Accountant</td>
-					<td>Tokyo</td>
-					<td>63</td>
-					<td>2011/07/25</td>
-					<td>$170,750</td>
+					<td>473458</td>
+					<td>10001</td>
+					<td>2</td>
+					<td>04/06/2018 13:00:00</td>
+					<td>100, 101, 6, 90</td>
+					<td>Filler</td>
 				</tr>
 				<tr>
-					<td>Ashton Cox</td>
-					<td>Junior Technical Author</td>
-					<td>San Francisco</td>
-					<td>66</td>
-					<td>2009/01/12</td>
-					<td>$86,000</td>
+					<td>473458</td>
+					<td>10001</td>
+					<td>2</td>
+					<td>04/06/2018 13:00:00</td>
+					<td>100, 101, 6, 90</td>
+					<td>Filler</td>
 				</tr>
 				<tr>
-					<td>Cedric Kelly</td>
-					<td>Senior Javascript Developer</td>
-					<td>Edinburgh</td>
-					<td>22</td>
-					<td>2012/03/29</td>
-					<td>$433,060</td>
+					<td>473458</td>
+					<td>10001</td>
+					<td>2</td>
+					<td>04/06/2018 13:00:00</td>
+					<td>100, 101, 6, 90</td>
+					<td>Filler</td>
 				</tr>
 				<tr>
-					<td>Airi Satou</td>
-					<td>Accountant</td>
-					<td>Tokyo</td>
-					<td>33</td>
-					<td>2008/11/28</td>
-					<td>$162,700</td>
+					<td>473458</td>
+					<td>10001</td>
+					<td>2</td>
+					<td>04/06/2018 13:00:00</td>
+					<td>100, 101, 6, 90</td>
+					<td>Filler</td>
 				</tr>
 				<tr>
-					<td>Brielle Williamson</td>
-					<td>Integration Specialist</td>
-					<td>New York</td>
-					<td>61</td>
-					<td>2012/12/02</td>
-					<td>$372,000</td>
+					<td>473458</td>
+					<td>10001</td>
+					<td>2</td>
+					<td>04/06/2018 13:00:00</td>
+					<td>100, 101, 6, 90</td>
+					<td>Filler</td>
 				</tr>
 				<tr>
-					<td>Herrod Chandler</td>
-					<td>Sales Assistant</td>
-					<td>San Francisco</td>
-					<td>59</td>
-					<td>2012/08/06</td>
-					<td>$137,500</td>
+					<td>473458</td>
+					<td>10001</td>
+					<td>2</td>
+					<td>04/06/2018 13:00:00</td>
+					<td>100, 101, 6, 90</td>
+					<td>Filler</td>
 				</tr>
 				<tr>
-					<td>Rhona Davidson</td>
-					<td>Integration Specialist</td>
-					<td>Tokyo</td>
-					<td>55</td>
-					<td>2010/10/14</td>
-					<td>$327,900</td>
+					<td>473458</td>
+					<td>10001</td>
+					<td>2</td>
+					<td>04/06/2018 13:00:00</td>
+					<td>100, 101, 6, 90</td>
+					<td>Filler</td>
 				</tr>
 			</tbody>
-			<tfoot>
-				<tr>
-					<th>Name</th>
-					<th>Position</th>
-					<th>Office</th>
-					<th>Age</th>
-					<th>Start date</th>
-					<th>Salary</th>
-				</tr>
-			</tfoot>
 		</table>
 	</div>
 </div>
+	</div>
+</div>
 
+
+<br />
 <br />
 <br />
