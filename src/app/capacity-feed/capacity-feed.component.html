@@ -1,6 +1,6 @@
  <div class="row">
  
- 		<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+<!--  		<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
  		<div class="panel panel-default" style="height: 20rem;">
 	    <div class="panel-heading">Choose Capacity Feed File</div>
 	      <div class="panel-body ">
@@ -19,28 +19,28 @@
 	        
 	        </div>
 	  </div>
- 		</div>
+ 		</div> -->
  		
- 		 		<!-- <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+ 		 		<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
  		<div class="panel panel-default" style="height: 20rem;">
 	    <div class="panel-heading">Choose Capacity Feed File</div>
 	      <div class="panel-body ">
 	      <form #createTrayForm="ngForm"  method="POST" action="#" enctype="multipart/form-data">
 				<div class="form-group">
 					<div class="file" name="Fichier1">
-						<input type="file" accept=".csv" #fileupload [(ngModel)]="myFile" name="myFile" 
-							class="form-control" />
+						<input type="file" accept=".csv" name="assetId" [(ngModel)]="astInvObj.assetId" #assetId="ngModel"  
+							class="form-control" (change)="changeListener($event)"/>
 					</div>
 				</div>
 				<div class="form-group">
-					<button type="submit" class="btn btn-success pull-right" (click)="changeListener(fileupload.files)">Submit</button>
+					<button type="button" class="btn btn-success pull-right" (click)="uploadFile()">Submit</button>
 					<button type="reset" class="btn btn-danger">Reset</button>
 				</div>
 			</form>
 	        
 	        </div>
 	  </div>
- 		</div> -->
+ 		</div>
  		<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
  			<div class="panel panel-default" style="height: 20rem;">
       <div class="panel-heading">Reset Data</div>
@@ -62,11 +62,55 @@
  	
  </div>
  
- 
+<!--  
  <div>
                 Select file:
                 <input type="file" (change)="changeListener($event)">
+</div> -->
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+<!--  <div class="content-wrapper">
+  <div *ngIf="! data">
+    <h3>No records found!</h3>
+  </div>
+  <div *ngIf="data">
+  <clinic-requests-table [columns]=columns [data]=data (viewClinicRequest)="viewClinicRequest($event)"></clinic-requests-table>
+  </div>
+
+</div> -->
+  
+ 
+ 
+ <div class="content-wrapper">
+  <div *ngIf="! data">
+    <h3>No records found!</h3>
+  </div>
+  <div *ngIf="data">
+  <clinic-requests-table [columns]=columns [data]=data ></clinic-requests-table>
+  </div>
+
 </div>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
  
  
 <div class="row">
@@ -74,6 +118,8 @@
 		<div class="panel panel-default" style="display: table; margin: auto">
 		<div class="panel-heading"> Uploaded File Data</div>
 	<div class="panel-body" style="overflow-x: auto;">
+	
+	
 	
 	<table id="example" class="table table-striped table-bordered table-responsive"
 			style="width: Auto">
